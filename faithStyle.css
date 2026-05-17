@@ -1,25 +1,18 @@
-@font-face {
-  font-family: "Open Baskerville";
-  src: url("./fonts/OpenBaskerville0053-Rd7W.otf ") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-}
-
-body {
-  margin: 0;
-  font-family: "Baskerville", serif;
-}
-
 /*Header Header Header*/
 
 .site-header {
   display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   justify-content: space-between;
   align-items: center;
   background-color: #3F51B5;
   color: black;
   padding: 10px 20px;
-  
+
 }
 
 .logo-section {
@@ -28,20 +21,19 @@ body {
 }
 
 .logo-section img {
-  height: 90px;
-  width: 90px;
+  height: 60px;
+  width: 60px;
   margin-right: 10px;
   border-radius: 50%; 
-  
+
 }
 
 .logo-section h1 {
   margin: 0;
   font-family: "Libre Baskerville", serif;
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bold;
 }
-
 hr {
   border: none;
   border-top: 10px solid rgba(0, 0, 0, 1);
@@ -72,10 +64,10 @@ hr {
 
 #parish-toggle {
   color: #000000;
-  text-decoration: underline;  
+  text-decoration: underline;
   cursor: pointer;
   font-weight: bold;
-  display: inline-block;           
+  display: inline-block;
   text-align: center;
 }
 
@@ -119,12 +111,11 @@ hr {
 
 /*content content content*/
 
-/*added*/
 body {
-  background-image: linear-gradient(to top, rgb(190, 190, 190), rgb(255, 255, 255)); /*changed*/ 
-} 
+  background-image: linear-gradient(to top, rgb(190, 190, 190), rgb(255, 255, 255));
+  padding-top: 100px;
+}
 
-/*changed*/
 .content {
   text-align: center;
   margin: 0px 10px;
@@ -133,47 +124,277 @@ body {
 .gallery {
   display: flex;
   justify-content: center;
-  gap: 20px;              
+  gap: 20px;
   padding: 20px 5%;
-  margin: 0 auto;          
+  margin: 0 auto;
+  margin-top: 20px;
+  flex-wrap: wrap;
 }
 
-.card-header{
-    background-color: #3498db;
-    color:#000000;
-    font-weight: bold;
-    padding: 10px;
+.card-header {
+  background-color: #3498db;
+  color: #000000;
+  font-weight: bold;
+  padding: 10px;
 }
 
 .card-body {
-    background-color: rgb(255, 255, 255); /*changed*/
-    color: #000000;
-    padding: 15px;
-    text-align: center;
+  background-color: rgb(255, 255, 255);
+  color: #000000;
+  padding: 15px;
+  text-align: center;
 }
 
-.card{
+.card {
   margin: 10px;
 }
 
 .gallery-item {
-  flex: 1;                
-  background-color: #ddd;  
-  border: 1px solid #ccc;  
-  overflow: hidden;        
-  aspect-ratio: 3 / 2;    
+  flex: 1 1 300px;
+  max-width: 500px;
+  background-color: #ddd;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  border-radius: 12px;
 }
 
 .gallery-item img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;      
+  height: 300px;
+  object-fit: cover;
   display: block;
 }
 
 /*content content content*/
 
-/*footer footer footer*/
+/* =========================
+   DARK MODE + HOVER + ANIMATION
+========================= */
+
+body,
+.site-header,
+footer,
+.card,
+.card h3,
+.nav-links a,
+#contact-btn,
+#darkModeToggle,
+.image-banner img {
+  transition: all 0.3s ease;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark-mode {
+  background: #121212 !important;
+  background-image: none !important;
+  color: white;
+}
+
+/* FIX INVISIBLE TEXT */
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode li,
+body.dark-mode a,
+body.dark-mode label,
+body.dark-mode div {
+  color: white !important;
+}
+
+/* HEADER */
+
+body.dark-mode .site-header {
+  background-color: #0d1117;
+}
+
+/* NAVIGATION */
+
+body.dark-mode .nav-links a {
+  color: white !important;
+}
+
+body.dark-mode #parish-toggle {
+  color: white !important;
+}
+
+/* DROPDOWNS */
+
+body.dark-mode #parish-nav,
+body.dark-mode #contact-nav {
+  background-color: #1f1f1f;
+  border: 2px solid white;
+}
+
+body.dark-mode #parish-nav a,
+body.dark-mode #contact-nav a {
+  color: white !important;
+}
+
+body.dark-mode #parish-nav li:hover,
+body.dark-mode #contact-nav li:hover {
+  background-color: #333;
+}
+
+/* MAIN CONTENT */
+
+body.dark-mode .section-title h2,
+body.dark-mode .card-body,
+body.dark-mode p,
+body.dark-mode li {
+  color: white !important;
+}
+
+/* CARDS */
+
+body.dark-mode .card {
+  background-color: #1f1f1f;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .card-body {
+  background-color: #1f1f1f !important;
+}
+
+body.dark-mode .card-header {
+  background-color: #2563eb;
+  color: white !important;
+}
+
+body.dark-mode .card h3 {
+  background-color: #2563eb;
+  color: white !important;
+}
+
+/* FOOTER */
+
+body.dark-mode footer {
+  background-color: #0d1117;
+}
+
+body.dark-mode footer h3,
+body.dark-mode footer p {
+  color: white !important;
+}
+
+/* CONTACT BUTTON */
+
+body.dark-mode #contact-btn {
+  background-color: #2563eb;
+  color: white;
+  border: 2px solid white;
+}
+
+/* =========================
+   NAVIGATION HOVER
+========================= */
+
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background-color: yellow;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: yellow;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* DARK MODE NAV HOVER */
+
+body.dark-mode .nav-links a:hover {
+  color: #4da3ff !important;
+}
+
+/* =========================
+   DROPDOWN ANIMATION
+========================= */
+
+#parish-nav {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.parish-info:hover #parish-nav {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* =========================
+   CARD HOVER
+========================= */
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+}
+
+/* =========================
+   IMAGE HOVER
+========================= */
+
+.image-banner img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+#contact-btn:hover,
+#darkModeToggle:hover {
+  transform: scale(1.08);
+}
+
+/* =========================
+   DARK MODE BUTTON
+========================= */
+
+#darkModeToggle {
+  background: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 18px;
+  position: Right;
+}
+
+/* MOBILE */
+
+@media (max-width: 480px) {
+  #darkModeToggle {
+    margin-top: 10px;
+  }
+}
+
+/*FOOTER FOOTER FOOTER*/
 
 footer {
   background: #3F51B5;
@@ -189,20 +410,17 @@ footer {
   flex-wrap: wrap;
 }
 
-/*added*/
-.logos{
+.logos {
   margin-left: 15px;
 }
 
-/*changed*/
 .logos img {
- height: 90px;
+  height: 90px;
   width: 90px;
-  border-radius: 50%; 
+  border-radius: 50%;
   align-items: center;
 }
 
-/*added*/
 .parish-name {
   margin-top: 10px;
   margin-right: 10px;
@@ -219,6 +437,8 @@ footer {
   margin-top: 5px;
 }
 
+/* CONTACT SECTION */
+
 .contact {
   position: relative;
   display: inline-block;
@@ -232,19 +452,23 @@ footer {
   cursor: pointer;
   font-weight: bold;
   border-radius: 5px;
-  margin-right: 10px; /*changed*/
-  width: 220px; 
+  margin-right: 10px;
+  width: 220px;
 }
+
+/* CONTACT DROPDOWN */
 
 #contact-nav {
   position: absolute;
-  bottom: 100%;
-  left: 0;
-  background-color: #fff;
-  color: #3F51B5;
-  border-radius: 5px;
-  padding: 5px;
-  width: 220px;
+  bottom: 110%;
+  right: 0;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  width: 260px;
+  z-index: 9999;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 #contact-nav ul {
@@ -253,8 +477,27 @@ footer {
   padding: 0;
 }
 
+#contact-nav li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+#contact-nav li:last-child {
+  border-bottom: none;
+}
+
+#contact-nav a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
 #contact-nav li:hover {
-  border: 2px solid #000000;
+  background-color: #f1f1f1;
+  border-radius: 5px;
 }
 
 .nav-buttons li:hover {
@@ -271,7 +514,7 @@ footer {
   margin-bottom: 10px;
 }
 
-/*footer footer footer*/
+/*FOOTER FOOTER FOOTER*/
 
 /*queries queries queries*/
 
@@ -291,17 +534,32 @@ footer {
     gap: 10px;
   }
 
-  .gallery {
-    flex-direction: column;
-    align-items: center;
-    gap: 18px;
-    padding: 25px 10px;
-  }
+ .gallery {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 5%;
+  margin: 0 auto;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
 
-  .gallery-item {
-    width: 95%;
-    max-width: 400px;
-  }
+.gallery-item {
+  flex: 1 1 300px;
+  max-width: 500px;
+  background-color: #ddd;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
     .footer-content {
     flex-direction: column;  
     align-items: center;      
@@ -519,5 +777,30 @@ footer {
   }
 }
 
+/*back to top*/
+  #backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px; /* moves button to the right */
+  left: auto;  /* prevents left positioning */
+  
+  display: none;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
 
+#backToTop:hover {
+  background-color: #2980b9;
+}
 /*queries queries queries*/
+
+
+
